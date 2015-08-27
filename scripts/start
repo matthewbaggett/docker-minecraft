@@ -16,6 +16,9 @@ if [ ! -f /data/eula.txt ]
 then
     echo "eula=true" > /data/eula.txt
 fi
+RUN sed -i 's/server-port=25565/server-port=5000/g' /data/server.properties
+RUN sed -i 's/max-players=20/max-players=10/g' /data/server.properties
+RUN sed -i 's/motd=A Minecraft Server/motd=A Cloudminer Minecraft Server/g' /data/server.properties
 
 cd /data/; java -Xmx2G -jar minecraft_server.jar nogui
 

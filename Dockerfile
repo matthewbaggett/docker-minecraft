@@ -35,7 +35,7 @@ RUN    chmod +x /start
 
 
 # 25565 is for minecraft
-EXPOSE 25565
+PORTS 5000
 
 # /data contains static files and database
 VOLUME ["/data"]
