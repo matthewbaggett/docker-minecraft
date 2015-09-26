@@ -15,10 +15,8 @@ RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-se
 RUN wget http://ftb.cursecdn.com/FTB2/modpacks/FTBInfinity/1_10_1/FTBInfinityServer.zip
 RUN unzip FTBInfinityServer.zip
 RUN chmod +x /*.sh
-
-RUN ls
-
 RUN ./FTBInstall.sh
+RUN sed -i 's/false/true/g' /eula.txt
 
 # 25565 is for minecraft
 EXPOSE 5000
