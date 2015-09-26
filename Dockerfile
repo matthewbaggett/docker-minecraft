@@ -1,38 +1,24 @@
-# -----------------------------------------------------------------------------
-# docker-minecraft
-#
-# Builds a basic docker image that can run a Minecraft server
-# (http://minecraft.net/).
-#
-# Authors: Isaac Bythewood
-# Updated: Dec 14th, 2014
-# Require: Docker (http://www.docker.io/)
-# -----------------------------------------------------------------------------
-
-
 # Base system is the LTS version of Ubuntu.
 FROM   ubuntu:14.04
-
 
 # Make sure we don't get notifications we can't answer during building.
 ENV    DEBIAN_FRONTEND noninteractive
 
-
 # Download and install everything from the repos.
-RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install software-properties-common
+RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install wget unzip software-properties-common
 RUN    sudo apt-add-repository --yes ppa:webupd8team/java; apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
        apt-get --yes install curl oracle-java8-installer
 
+# Download FTBInfinity
+RUN wget http://ftb.cursecdn.com/FTB2/modpacks/FTBInfinity/1_10_1/FTBInfinityServer.zip
+RUN unzip FTBInfinityServer.zip
+RUN chmod +x /*.sh
 
-# Load in all of our config files.
-ADD    ./scripts/start /start
+RUN ls
 
-
-# Fix all permissions
-RUN    chmod +x /start
-
+RUN ./FTBInstall.sh
 
 # 25565 is for minecraft
 EXPOSE 5000
@@ -41,4 +27,4 @@ EXPOSE 5000
 VOLUME ["/data"]
 
 # /start runs it.
-CMD    ["/start"]
+CMD    ["/ServerStart.sh"]
