@@ -30,4 +30,4 @@ EXPOSE 5000
 VOLUME ["/data"]
 
 # /start runs it.
-CMD    ["/Server.sh"]
+CMD    ["/Start.sh"]
