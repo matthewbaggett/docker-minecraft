@@ -5,7 +5,7 @@ FROM   ubuntu:14.04
 ENV    DEBIAN_FRONTEND noninteractive
 
 # Download and install everything from the repos.
-RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install wget unzip software-properties-common
+RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install wget unzip nmap software-properties-common
 RUN    sudo apt-add-repository --yes ppa:webupd8team/java; apt-get --yes update
 RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
