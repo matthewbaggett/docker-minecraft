@@ -20,13 +20,15 @@ RUN sed -i 's/false/true/g' /data/eula.txt
 
 ADD Start.sh /data/Start.sh
 RUN chmod +x /data/Start.sh
+RUN ls -lah /data
 ADD server.properties /data/server.properties
 RUN sed -i 's/server\-port=25565/server\-port=5000/g' /data/server.properties
 RUN sed -i 's/max\-players=20/max\-players=10/g' /data/server.properties
 RUN sed -i 's/motd=A Minecraft Server/motd=A Cloudminer Minecraft Server/g' /data/server.properties
+RUN cat /data/server.properties
 
 # 25565 is for minecraft
-EXPOSE 5000
+EXPOSE 25565
 
 # /data contains static files and database
 VOLUME ["/data"]
