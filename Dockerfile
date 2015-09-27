@@ -19,8 +19,8 @@ RUN ./FTBInstall.sh
 RUN sed -i 's/false/true/g' /eula.txt
 
 ADD server.properties /server.properties
-RUN sed -i 's/server-port=25565/server-port=5000/g' /server.properties
-RUN sed -i 's/max-players=20/max-players=10/g' /server.properties
+RUN sed -i 's/server\-port=25565/server\-port=5000/g' /server.properties
+RUN sed -i 's/max\-players=20/max\-players=10/g' /server.properties
 RUN sed -i 's/motd=A Minecraft Server/motd=A Cloudminer Minecraft Server/g' /server.properties
 
 # 25565 is for minecraft
