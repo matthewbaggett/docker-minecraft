@@ -1,5 +1,5 @@
 #!/bin/bash
-screen -dmS minecraft "cd /data &&./ServerStart.sh"
+screen -dmS minecraft /data/ServerStart.sh
 for (( ; ; ))
 do
    sleep 1
