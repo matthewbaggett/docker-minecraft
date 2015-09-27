@@ -18,6 +18,7 @@ RUN chmod +x /data/*.sh
 RUN cd /data && ./FTBInstall.sh
 RUN sed -i 's/false/true/g' /data/eula.txt
 
+ADD ops.txt /data/ops.txt
 ADD Start.sh /data/Start.sh
 RUN chmod +x /data/Start.sh
 RUN ls -lah /data
