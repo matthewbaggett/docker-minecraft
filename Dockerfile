@@ -18,6 +18,8 @@ RUN chmod +x /*.sh
 RUN ./FTBInstall.sh
 RUN sed -i 's/false/true/g' /eula.txt
 
+ADD Start.sh /Start.sh
+RUN chmod +x /Start.sh
 ADD server.properties /server.properties
 RUN sed -i 's/server\-port=25565/server\-port=5000/g' /server.properties
 RUN sed -i 's/max\-players=20/max\-players=10/g' /server.properties
