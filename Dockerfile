@@ -1,5 +1,5 @@
 # Base system is the LTS version of Ubuntu.
-FROM   ubuntu:14.04
+FROM   phusion/baseimage:latest
 
 # Make sure we don't get notifications we can't answer during building.
 ENV    DEBIAN_FRONTEND noninteractive
@@ -23,7 +23,6 @@ ADD server.properties /data/server.properties
 ADD start-server.sh /data/start-server.sh
 
 RUN chmod +x /data/start-server.sh
-RUN ls -lah /data
 
 # 25565 is for minecraft
 EXPOSE 25565 8123
