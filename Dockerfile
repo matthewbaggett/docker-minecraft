@@ -13,26 +13,23 @@ RUN    apt-get --yes update; apt-get --yes upgrade; apt-get --yes install wget u
 	   rm -Rf /var/cache/apt/archives/*
 
 # Download FTBInfinity
-RUN wget http://ftb.cursecdn.com/FTB2/modpacks/FTBInfinity/1_10_1/FTBInfinityServer.zip && unzip FTBInfinityServer.zip -d /data && rm FTBInfinityServer.zip
-RUN chmod +x /data/*.sh
-RUN cd /data && ./FTBInstall.sh
-RUN sed -i 's/false/true/g' /data/eula.txt
+RUN wget http://servers.technicpack.net/Technic/servers/tekkit-legends/Tekkit_Legends_Server_v1.0.6.zip && unzip Tekkit_Legends_Server_v1.0.6.zip -d /data && rm Tekkit_Legends_Server_v1.0.6.zip
+WORKDIR /data
+RUN mkdir /data/plugins && cd /data/plugins && wget http://dev.bukkit.org/media/files/837/363/worldedit-bukkit-6.0.jar
+RUN cd /data/mods && wget http://addons-origin.cursecdn.com/files/2223/999/Dynmap-2.1-forge-1.7.10.jar
 
 ADD ops.txt /data/ops.txt
-ADD Start.sh /data/Start.sh
-RUN chmod +x /data/Start.sh
-RUN ls -lah /data
 ADD server.properties /data/server.properties
-RUN sed -i 's/server\-port=25565/server\-port=5000/g' /data/server.properties
-RUN sed -i 's/max\-players=20/max\-players=10/g' /data/server.properties
-RUN sed -i 's/motd=A Minecraft Server/motd=A Cloudminer Minecraft Server/g' /data/server.properties
-RUN cat /data/server.properties
+ADD start-server.sh /data/start-server.sh
+
+RUN chmod +x /data/start-server.sh
+RUN ls -lah /data
 
 # 25565 is for minecraft
-EXPOSE 25565
+EXPOSE 25565 8123
 
 # /data contains static files and database
 VOLUME ["/data"]
 
 # /start runs it.
-CMD    ["/data/Start.sh"]
+CMD    ["/data/start-server.sh"]
