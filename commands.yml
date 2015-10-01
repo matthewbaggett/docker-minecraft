@@ -4,7 +4,8 @@
 # 
 # IRC: #bukkit @ esper.net
 #    (If this means nothing to you, just go to http://webchat.esper.net/?channels=bukkit ) Forums: http://forums.bukkit.org/forums/bukkit-help.6/ Twitter: http://twitter.com/CraftBukkit Bug tracker: http://leaky.bukkit.org/
-command-block-overrides: [] aliases:
+command-block-overrides: [] 
+aliases:
   icanhasbukkit:
   - version $1-
   glist:

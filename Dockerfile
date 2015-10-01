@@ -22,7 +22,6 @@ ADD ops.txt /data/ops.txt
 ADD server.properties /data/server.properties
 ADD start-server.sh /data/start-server.sh
 ADD commands.yml /data/commands.yml
-ADD spigot.yml /data/spigot.yml
 
 RUN chmod +x /data/start-server.sh
 
